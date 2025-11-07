@@ -73,7 +73,7 @@ K_{\epsilon}(t) = (t + \epsilon)^{H-1/2}, \quad 0 < H < 1/2
 $$
 
 - Introduces **rough paths** for volatility to better match empirical data.  
-- Captures **short-term steep skew**, **volatility clustering**, and **power-law decay** of ATM volatility.  
+- Captures **short-term steep skew**, **volatility clustering**, and **power-law decay** of the skew ATM of the volatility.  
 - Provides a **more realistic term structure** of implied volatility across maturities.
 
 ---

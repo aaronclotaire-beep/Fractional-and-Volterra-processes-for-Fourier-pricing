@@ -26,10 +26,10 @@ These limitations motivated the development of **stochastic volatility models**.
 
 The **Heston model** introduces stochastic volatility:
 
-\begin{align*}
-	dS_t &=S_t \sqrt{V_t} dB_t, \quad d\langle W, B\rangle_t = \rho dt \\
-	dV_t &= (\theta-\kappa V_t)dt + \eta \sqrt{V_t} dW_t, \quad V_0 \geq 0, S_0=1
-\end{align*}
+
+$$ dS_t = S_t \sqrt{V_t} dB_t, \quad d\langle W, B\rangle_t = \rho dt $$
+$$ dV_t &= (\theta-\kappa V_t)dt + \eta \sqrt{V_t} dW_t, \quad V_0 \geq 0, S_0=1 $$
+
 
 
 where:

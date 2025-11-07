@@ -1,6 +1,6 @@
 # Fractional-and-Volterra-processes-for-Fourier-pricing
 
-This project explores the evolution of option pricing models, starting from the classical Black-Scholes framework and moving to stochastic volatility models, specifically Heston and Volterra-Heston (rough Heston).
+This project explores option pricing through Fourier transform methods on stochastic volatility models, focusing on Heston and Volterra-Heston (rough Heston), which capture market dynamics more accurately than the standard Black-Scholes framework.
 
 ---
 

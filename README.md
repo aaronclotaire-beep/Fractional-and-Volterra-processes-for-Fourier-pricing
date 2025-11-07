@@ -34,7 +34,7 @@ The **Heston model** introduces stochastic volatility:
 
 where:
 
-- \(S_t\) is the asset price.  
+- $S_t$ is the asset price.  
 - \(V_t\) is the instantaneous variance.  
 - \(\kappa\) is the speed of mean reversion, \(\theta\) is the long-term variance.  
 - \(\sigma\) is the volatility of variance (vol of vol).  

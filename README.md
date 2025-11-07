@@ -84,4 +84,4 @@ $$
 - **Heston:** stochastic volatility, good for medium/long maturities, but smooth paths limit short-term accuracy.  
 - **Volterra-Heston:** rough volatility, steep short-term skew, realistic term structure of implied volatility.  
 
-This project implements simulations and examples to visualize the differences between these models.
+This project implements simulations and examples to visualize the differences between two last models.

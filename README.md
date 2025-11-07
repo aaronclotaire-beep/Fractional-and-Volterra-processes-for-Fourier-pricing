@@ -1,12 +1,12 @@
 # Fractional-and-Volterra-processes-for-Fourier-pricing
 
-This project explores the evolution of option pricing models, from the classical Black-Scholes framework to more advanced stochastic volatility models, namely Heston and Volterra-Heston (rough Heston).
+This project explores the evolution of option pricing models, starting from the classical Black-Scholes framework and moving to stochastic volatility models, specifically Heston and Volterra-Heston (rough Heston).
 
 ---
 
-## **1. Limitations of the Black-Scholes Model**
+## 1. Limitations of the Black-Scholes Model
 
-The Black-Scholes (BS) model is a cornerstone of financial mathematics, providing a closed-form solution for European option pricing. It assumes:
+The Black-Scholes (BS) model is a cornerstone of financial mathematics, providing closed-form solutions for European option pricing. It assumes:
 
 - Constant volatility over time.
 - Log-normal distribution of asset prices.
@@ -22,57 +22,66 @@ These limitations motivated the development of **stochastic volatility models**.
 
 ---
 
-## **2. Introduction to the Heston Model**
+## 2. The Heston Model
 
-The **Heston model** introduces stochastic volatility:
+The **classical Heston model** introduces stochastic volatility:
 
+$$
+dS_t = S_t \sqrt{V_t} \, dB_t, \quad d\langle W, B\rangle_t = \rho \, dt, \quad S_0=1
+$$
 
-$$ dS_t = S_t \sqrt{V_t} dB_t, \quad d\langle W, B\rangle_t = \rho dt $$
-$$ dV_t &= (\theta-\kappa V_t)dt + \eta \sqrt{V_t} dW_t, \quad V_0 \geq 0, S_0=1 $$
-
-
+$$
+dV_t = (\theta - \lambda V_t) \, dt + \eta \sqrt{V_t} \, dW_t, \quad V_0 \geq 0
+$$
 
 where:
 
 - $S_t$ is the asset price.  
-- \(V_t\) is the instantaneous variance.  
-- \(\kappa\) is the speed of mean reversion, \(\theta\) is the long-term variance.  
-- \(\sigma\) is the volatility of variance (vol of vol).  
-- \(\rho\) is the correlation between the asset and its variance.
+- $V_t$ is the instantaneous variance.  
+- $\lambda$ is the speed of mean reversion.  
+- $\theta$ is the long-term variance level.  
+- $\eta$ is the volatility of variance (vol of vol).  
+- $\rho$ is the correlation between the asset and its variance.
 
 **Advantages:**
 
-- Captures **volatility smiles and skews**, especially for medium and long maturities.  
+- Captures **volatility smiles and skews** for medium and long maturities.  
 - Provides **stochastic volatility**, allowing more realistic modeling of market dynamics.  
 
 **Limitations:**
 
 - Fails to reproduce the **steep short-term skew** observed in real markets.  
-- Volatility paths are still relatively smooth, unlike empirical "rough volatility" data.  
+- Volatility paths are still relatively smooth compared to empirical “rough volatility” data.  
 
 ---
 
-## **3. Introduction to the Volterra-Heston (Rough Heston) Model**
+## 3. The Volterra-Heston (Rough Heston) Model
 
-The **Volterra-Heston** model generalizes the Heston model by introducing **memory effects and rough volatility**:
+The **Volterra-Heston model** generalizes Heston by introducing **memory effects and rough volatility**:
 
-\[
-V_t = V_0 + \int_0^t K(t-s) \big( \kappa (\theta - V_s) ds + \sigma \sqrt{V_s} dW_s^V \big)
-\]
+$$
+\begin{align*}
+dS_t &= S_t \sqrt{V_t} \, dB_t, \quad S_0=1,\\
+V_t &= V_0 + \int_0^t K_{\epsilon}(t-s) \Big( (\theta - \lambda V_s) \, ds + \eta \sqrt{V_s} \, dW_s \Big),
+\end{align*}
+$$
 
-- \(K(t-s)\) is a kernel (often \(t^{\alpha-1}\), \(0 < \alpha < 1\)) that induces rough paths.  
-- Captures the **empirical roughness** and **short-term irregularities** of market volatility.  
+with the kernel:
 
-**Advantages:**
+$$
+K_{\epsilon}(t) = (t + \epsilon)^{H-1/2}, \quad 0 < H < 1/2
+$$
 
-- Fits **short-term implied volatility skews** more accurately than Heston.  
-- Models **volatility clustering and power-law decay** of ATM volatility across maturities.  
-- Provides a more **realistic term structure of volatility**.  
+- Introduces **rough paths** for volatility to better match empirical data.  
+- Captures **short-term steep skew**, **volatility clustering**, and **power-law decay** of ATM volatility.  
+- Provides a **more realistic term structure** of implied volatility across maturities.
 
 ---
 
-## **Conclusion**
+## 4. Conclusion
 
 - **Black-Scholes:** simple, closed-form, but unrealistic for short-term or skewed markets.  
 - **Heston:** stochastic volatility, good for medium/long maturities, but smooth paths limit short-term accuracy.  
-- **Volterra-Heston:** captures rough volatility, steep short-term skew, and realistic term structure.  
+- **Volterra-Heston:** rough volatility, steep short-term skew, realistic term structure of implied volatility.  
+
+This project implements simulations and examples to visualize the differences between these models.
